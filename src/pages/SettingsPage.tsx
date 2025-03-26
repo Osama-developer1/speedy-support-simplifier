@@ -1,17 +1,17 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import Dashboard from '@/components/Dashboard';
+import Settings from '@/components/Settings';
 
-const Index: React.FC = () => {
+const SettingsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1">
-        <Dashboard />
+        <Settings />
       </main>
     </div>
   );
 };
 
-export default Index;
+export default SettingsPage;
