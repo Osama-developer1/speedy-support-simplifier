@@ -47,6 +47,30 @@ const ResponseTemplates: React.FC = () => {
   );
 
   const copyToClipboard = (content: string, title: string) => {
+    // For extension usage
+    if (chrome?.runtime?.sendMessage) {
+      // Send message to content script to copy and insert into active field
+      chrome.runtime.sendMessage(
+        { 
+          action: 'copyToClipboard', 
+          content
+        },
+        (response) => {
+          if (response?.success) {
+            toast.success(`Template "${title}" copied and inserted`);
+          } else {
+            toast.error('Failed to insert template');
+            fallbackCopy(content, title);
+          }
+        }
+      );
+    } else {
+      // Fallback for non-extension usage
+      fallbackCopy(content, title);
+    }
+  };
+
+  const fallbackCopy = (content: string, title: string) => {
     navigator.clipboard.writeText(content)
       .then(() => {
         toast.success(`Template "${title}" copied to clipboard`);

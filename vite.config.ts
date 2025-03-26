@@ -25,10 +25,13 @@ export default defineConfig(({ mode }) => ({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         popup: path.resolve(__dirname, 'src/popup.tsx'),
+        contentScript: path.resolve(__dirname, 'src/contentScript.tsx')
       },
       output: {
         entryFileNames: (chunkInfo) => {
-          return chunkInfo.name === 'popup' ? 'popup.js' : '[name]-[hash].js';
+          if (chunkInfo.name === 'popup') return 'popup.js';
+          if (chunkInfo.name === 'contentScript') return 'contentScript.js';
+          return '[name]-[hash].js';
         },
       },
     },
