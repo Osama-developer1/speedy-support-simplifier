@@ -1,0 +1,21 @@
+
+{
+  "manifest_version": 3,
+  "name": "Speedy Support Simplifier",
+  "version": "1.0.0",
+  "description": "Customer service assistant with quick actions and response templates",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "extension-icon-16.png",
+      "48": "extension-icon-48.png",
+      "128": "extension-icon-128.png"
+    }
+  },
+  "permissions": ["storage", "clipboardWrite"],
+  "icons": {
+    "16": "extension-icon-16.png",
+    "48": "extension-icon-48.png",
+    "128": "extension-icon-128.png"
+  }
+}

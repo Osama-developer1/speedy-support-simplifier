@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -18,5 +19,20 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        popup: path.resolve(__dirname, 'src/popup.tsx'),
+      },
+      output: {
+        entryFileNames: (chunkInfo) => {
+          return chunkInfo.name === 'popup' ? 'popup.js' : '[name]-[hash].js';
+        },
+      },
+    },
+    outDir: 'dist',
+    emptyOutDir: true,
   },
 }));
