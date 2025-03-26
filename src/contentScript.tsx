@@ -1,24 +1,26 @@
-
 import { createRoot } from 'react-dom/client';
 import SalesforceInjectUI from './components/SalesforceInjectUI';
 
-// Listen for messages from the popup
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'copyToClipboard') {
-    // Copy content to clipboard
-    navigator.clipboard.writeText(message.content)
-      .then(() => {
-        sendResponse({ success: true });
-        // Attempt to insert into active text field if possible
-        tryInsertIntoActiveField(message.content);
-      })
-      .catch(err => {
-        console.error('Failed to copy: ', err);
-        sendResponse({ success: false, error: err.toString() });
-      });
-    return true; // Indicates async response
-  }
-});
+// Only add listener if Chrome API is available
+if (typeof chrome !== 'undefined' && chrome?.runtime?.onMessage) {
+  // Listen for messages from the popup
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'copyToClipboard') {
+      // Copy content to clipboard
+      navigator.clipboard.writeText(message.content)
+        .then(() => {
+          sendResponse({ success: true });
+          // Attempt to insert into active text field if possible
+          tryInsertIntoActiveField(message.content);
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          sendResponse({ success: false, error: err.toString() });
+        });
+      return true; // Indicates async response
+    }
+  });
+}
 
 function tryInsertIntoActiveField(content: string) {
   // Try to find the active element and insert text if it's an input or textarea

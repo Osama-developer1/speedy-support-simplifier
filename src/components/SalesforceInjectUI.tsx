@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MessageSquare } from 'lucide-react';
 
@@ -10,8 +9,13 @@ const SalesforceInjectUI: React.FC = () => {
   };
   
   const openExtensionPopup = () => {
-    // This will open the extension popup
-    chrome.runtime.sendMessage({ action: 'openPopup' });
+    // Check if Chrome API is available before using it
+    if (typeof chrome !== 'undefined' && chrome?.runtime?.sendMessage) {
+      // This will open the extension popup
+      chrome.runtime.sendMessage({ action: 'openPopup' });
+    } else {
+      console.warn('Chrome extension API not available');
+    }
   };
   
   return (

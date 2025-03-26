@@ -48,7 +48,7 @@ const ResponseTemplates: React.FC = () => {
 
   const copyToClipboard = (content: string, title: string) => {
     // For extension usage
-    if (chrome?.runtime?.sendMessage) {
+    if (typeof chrome !== 'undefined' && chrome?.runtime?.sendMessage) {
       // Send message to content script to copy and insert into active field
       chrome.runtime.sendMessage(
         { 
