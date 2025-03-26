@@ -10,15 +10,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Check if running as an extension
-const isExtension = window.location.pathname === '/popup.html';
-
 const App = () => {
-  if (isExtension) {
-    // Extension has its own routing in popup.tsx
-    return null;
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
