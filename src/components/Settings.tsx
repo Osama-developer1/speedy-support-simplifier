@@ -36,27 +36,27 @@ const defaultTemplates: TemplateItem[] = [
   {
     id: '1',
     title: 'Supplier Investigation',
-    content: 'Thank you for contacting us. Your case has been forwarded to the supplier for investigation. We expect to receive a response within 3-5 business days.'
+    content: "Thank you for contacting us. Your case has been forwarded to the supplier for investigation. We expect to receive a response within 3-5 business days."
   },
   {
     id: '2',
     title: 'Case Closure',
-    content: 'I hope this email finds you well. We are pleased to inform you that your case has been resolved. If you have any further questions, please don't hesitate to contact us.'
+    content: "I hope this email finds you well. We are pleased to inform you that your case has been resolved. If you have any further questions, please don't hesitate to contact us."
   },
   {
     id: '3',
     title: 'Additional Information',
-    content: 'To proceed with your case, we require additional information. Could you please provide the following details: [DETAILS]. This will help us resolve your case more efficiently.'
+    content: "To proceed with your case, we require additional information. Could you please provide the following details: [DETAILS]. This will help us resolve your case more efficiently."
   },
   {
     id: '4',
     title: 'Refund Processing',
-    content: 'We're happy to inform you that your refund has been processed. Please allow 5-10 business days for the funds to appear in your account, depending on your bank's processing time.'
+    content: "We're happy to inform you that your refund has been processed. Please allow 5-10 business days for the funds to appear in your account, depending on your bank's processing time."
   },
   {
     id: '5',
     title: 'Escalation Notice',
-    content: 'Your case has been escalated to our specialized team for further review. We understand the urgency of your situation and we're working to resolve it as quickly as possible.'
+    content: "Your case has been escalated to our specialized team for further review. We understand the urgency of your situation and we're working to resolve it as quickly as possible."
   }
 ];
 
